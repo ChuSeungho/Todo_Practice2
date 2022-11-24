@@ -1,0 +1,39 @@
+.hidden {
+    display: none;
+}
+img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: -1;
+    opacity: 80%;
+}
+h1{
+    text-align: center;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+ul{
+    text-align: center;
+    color: rgb(207, 224, 98);
+    font-family: nanum;
+    list-style: none;
+}
+h2{
+    font-size: 70px;
+    text-align: center;
+}
+.weather{
+    position: relative;
+}
+button{
+    position: flex;
+}
+input{
+    position: absolute, fixed;
+    display: flex;
+    margin: auto
+}

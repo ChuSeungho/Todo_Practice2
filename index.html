@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Momentum App</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="./css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <h2 id="clock">00:00:00</h2>
+        <form id="login-form" class="hidden">
+            <input 
+            required
+            maxlength="15"
+            type="text" 
+            placeholder="What is your name?" 
+            />
+            <input type="submit" value="Log In" />
+            </form> 
+            
+            <h1 id="greeting" class="hidden"></h1>
+            <form id="todo-form">
+                <input type="text" placeholder="ToDo를 입력하고 엔터를 눌러주세요." required />
+            </form>
+            <button id="clear" style="color:rgb(10, 9, 9); border:none;">Todo 초기화하기</button>
+            <ul id="todo-list"></ul>
+            <div id="quote" style="border: 1px solid; color: rgb(128, 212, 39); position: absolute, fixed; text-align: center; display: flex,;">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div id="weather" style="color:rgb(39, 212, 197); position: relative, fixed; top: 230px; right: -770px;">
+            <span></span>
+            <span></span>
+        </div>
+        <script src="js/greetings.js"></script>
+        <script src="js/clock.js"></script>
+        <script src="js/quotes.js"></script>
+        <script src="js/background.js"></script>
+        <script src="js/todo.js"></script>
+        <script src="js/weather.js"></script>
+        <script src="js/cleartodo.js"></script>
+    </body>
+</html>

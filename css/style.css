@@ -11,16 +11,22 @@ img {
     bottom: 0px;
     z-index: -1;
     opacity: 80%;
+    object-fit: cover;
+    object-position: center;
 }
 h1{
     text-align: center;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
-ul{
-    text-align: center;
+th{
     color: rgb(207, 224, 98);
-    font-family: nanum;
     list-style: none;
+    display: flex;
+    margin: auto;
+    font-size: 50px;
+}
+td{
+    color:bisque;
 }
 h2{
     font-size: 70px;
@@ -36,4 +42,8 @@ input{
     position: absolute, fixed;
     display: flex;
     margin: auto
+}
+.todolist tr{
+    text-align: center;
+    font-display: flex;
 }

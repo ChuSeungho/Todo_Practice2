@@ -2,6 +2,7 @@ const toDoForm = document.getElementById("todo-form");
 const toDoInput = document.querySelector("#todo-form input");
 const toDoList = document.getElementById("todo-list");
 const toDoClear = document.getElementById("clear");
+const getDatas = document.getElementById("gData")
 
 const TODOS_KEY = "todos"
 
@@ -18,51 +19,20 @@ function deleteTodo(event){
     saveTodos();
 }
 
-function clearTodo(){
-    if(localStorage.todos.length == 2){
-        alert("아직 작성된 ToDo가 없습니다!")
-        
-    }else{
-    localStorage.setItem(TODOS_KEY, "[]")
-    location.reload()
-
-    }}
-
-function paintToDo(newTodo) {
-    const li = document.createElement("li");
-      li.id = newTodo.id
-    const span = document.createElement("span");
-    span.innerText = newTodo.text;
-    const button = document.createElement("button");
-    button.innerText = "❌"
-    button.addEventListener("click", deleteTodo)
-    li.appendChild(span);
-    li.appendChild(button);
-    toDoList.appendChild(li);
-}
-
-function handleToDoSubmit(event) {
+function postTodo(event) {
     event.preventDefault();
+    
     const newTodo = toDoInput.value;
-    toDoInput.value = "";
-    const newTodoObj = {
-        text: newTodo,
-        id: Date.now()
+    const ToDo = {
+    "text": `${newTodo}`,
     }
-    toDos.push(newTodoObj);
-    paintToDo(newTodoObj);
-    saveTodos();
+    fetch("http://localhost:3000/todos", {
+        method: "POST",
+        body: JSON.stringify(ToDo),
+        headers: {
+            "content-type": "application/json; charset=UTF-8",
+        },
+    })
 }
 
-clear.addEventListener("click", clearTodo)
-
-toDoForm.addEventListener("submit", handleToDoSubmit)
-
-const savedToDos = localStorage.getItem(TODOS_KEY)
-
-if(savedToDos !== null){
-    const parsedToDos = JSON.parse(savedToDos);
-    toDos = parsedToDos; 
-    parsedToDos.forEach(paintToDo);
-    }
-
+toDoForm.addEventListener("submit", postTodo)

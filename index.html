@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="./css/style.css" rel="stylesheet">
     </head>
-    <body>
+    <body>  
         <h2 id="clock">00:00:00</h2>
         <form id="login-form" class="hidden">
             <input 
@@ -22,7 +22,15 @@
             <form id="todo-form">
                 <input type="text" placeholder="ToDo를 입력하고 엔터를 눌러주세요." required />
             </form>
-            <button id="clear" style="color:rgb(10, 9, 9); border:none;">Todo 초기화하기</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>＃ Todo List</th>
+                    </tr>
+                </thead>
+                <tbody id="todolist"></tbody>
+            </table>
+            <div id="todoLists"></div>
             <ul id="todo-list"></ul>
             <div id="quote" style="border: 1px solid; color: rgb(128, 212, 39); position: absolute, fixed; text-align: center; display: flex,;">
                 <span></span>
@@ -36,9 +44,23 @@
         <script src="js/greetings.js"></script>
         <script src="js/clock.js"></script>
         <script src="js/quotes.js"></script>
-        <script src="js/background.js"></script>
-        <script src="js/todo.js"></script>
+        <script src="js/background.js" class="image"></script>
+        <script src="js/todo.js"></script>  
         <script src="js/weather.js"></script>
-        <script src="js/cleartodo.js"></script>
+        <script id="gData">
+            function getData() {
+            fetch("http://localhost:3000/todos")
+            .then((response) => response.json())
+            .then((json) => {
+                const h = [];
+            for(const todos of json) {
+                h.push(`<tr>`)
+                h.push(`<td>＃ ${todos.text}</td>`)
+                h.push(`</tr>`)   
+            }
+            document.getElementById("todolist").innerHTML = h.join("");
+        });
+    }
+        </script>
     </body>
 </html>
